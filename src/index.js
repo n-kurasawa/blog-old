@@ -2,7 +2,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
-import { routerMiddleware } from 'react-router-redux';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import client from 'axios';
@@ -19,10 +18,7 @@ import 'typeface-roboto';
 
 const history = createHistory();
 const thunkWithClient = thunk.withExtraArgument(client);
-const store = createStore(
-  reducer,
-  applyMiddleware(routerMiddleware(history), thunkWithClient),
-);
+const store = createStore(reducer, applyMiddleware(thunkWithClient));
 
 const theme = createMuiTheme({
   palette: {

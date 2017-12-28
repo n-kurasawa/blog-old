@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { withStyles } from 'material-ui/styles';
 
 import { AppBar, Toolbar, Typography } from 'material-ui';
@@ -44,7 +45,9 @@ class Header extends React.Component {
         position="fixed"
       >
         <Toolbar>
-          <Typography type="title">K7016 Tech Blog</Typography>
+          <Link to="/">
+            <Typography type="title">K7016 Tech Blog</Typography>
+          </Link>
         </Toolbar>
       </AppBar>
     );

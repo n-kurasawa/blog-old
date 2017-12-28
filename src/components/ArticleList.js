@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Typography } from 'material-ui';
 import { connect } from 'react-redux';
 
@@ -20,12 +21,16 @@ const styles = {
   },
 };
 
-const Article = ({ title, date }) => (
+const Article = ({ id, title, date }) => (
   <div style={styles.article}>
-    <Typography style={styles.date}>{date}</Typography>
-    <Typography style={styles.title} type="headline">
-      {title}
-    </Typography>
+    <Link to={`/articles/${id}`}>
+      <Typography style={styles.date}>{date}</Typography>
+    </Link>
+    <Link to={`/articles/${id}`}>
+      <Typography style={styles.title} type="headline">
+        {title}
+      </Typography>
+    </Link>
   </div>
 );
 

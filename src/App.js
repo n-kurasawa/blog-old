@@ -1,6 +1,5 @@
 import React from 'react';
-import { ConnectedRouter as Router } from 'react-router-redux';
-import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { load } from 'actions/article-actions';
 
@@ -21,24 +20,20 @@ class App extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
-        <Header />
-        <div style={styles}>
-          <Router history={this.props.history}>
-            <Route component={AppRoute} />
-          </Router>
-        </div>
-      </React.Fragment>
+      <BrowserRouter>
+        <React.Fragment>
+          <Header />
+          <div style={styles}>
+            <Switch>
+              <Route exact path="/" component={ArticleList} />
+              <Route exact path="/articles" component={ArticleList} />
+              <Route path="/articles/:id" component={Article} />
+            </Switch>
+          </div>
+        </React.Fragment>
+      </BrowserRouter>
     );
   }
 }
-
-const AppRoute = () => (
-  <Switch>
-    <Route exact path="/" component={ArticleList} />
-    <Route exact path="/articles" component={ArticleList} />
-    <Route path="/articles/:id" component={Article} />
-  </Switch>
-);
 
 export default App;
