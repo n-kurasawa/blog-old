@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { load } from 'actions/article-actions';
+import { load } from 'reducers/article';
 
 import Header from 'components/Header';
 import ArticleList from 'components/ArticleList';

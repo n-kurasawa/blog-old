@@ -1,3 +1,4 @@
+/* eslint-disable */
 const config = require('config');
 const webpack = require('webpack');
 const precss = require('precss');
