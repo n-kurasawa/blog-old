@@ -6,7 +6,7 @@ export default function reducer(state = initialState, action = {}) {
   switch (action.type) {
     case ARTICLE.LOAD:
       return {
-        articles: action.results,
+        articles: action.articles,
       };
     default:
       return state;
@@ -18,13 +18,9 @@ export const ARTICLE = {
 };
 
 export function load() {
-  return (dispatch, getState, client) => {
-    return client
-      .get('https://blog-77588.firebaseio.com/articles.json')
-      .then(res => res.data)
-      .then(data => {
-        const results = data;
-        dispatch({ type: ARTICLE.LOAD, results });
-      });
+  return (dispatch, getState, api) => {
+    return api.all().then(articles => {
+      dispatch({ type: ARTICLE.LOAD, articles });
+    });
   };
 }

@@ -4,7 +4,6 @@ import ReactDOM from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
-import client from 'axios';
 import thunk from 'redux-thunk';
 import { MuiThemeProvider, createMuiTheme } from 'material-ui/styles';
 import { grey, blueGrey } from 'material-ui/colors';
@@ -12,12 +11,13 @@ import { AppContainer } from 'react-hot-loader';
 
 import reducer from 'reducers';
 import App from './App';
+import ArticleApi from 'articleApi';
 
 import 'index.css';
 import 'typeface-roboto';
 
 const history = createHistory();
-const thunkWithClient = thunk.withExtraArgument(client);
+const thunkWithClient = thunk.withExtraArgument(new ArticleApi());
 const store = createStore(reducer, applyMiddleware(thunkWithClient));
 
 const theme = createMuiTheme({
