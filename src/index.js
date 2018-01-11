@@ -37,7 +37,7 @@ const theme = createMuiTheme({
       color: blueGrey[800],
     },
     body1: {
-      fontSize: 20,
+      fontSize: 18,
       fontFamily:
         '"Hiragino Mincho ProN", serif, Roboto Helvetica, Arial, sans-serif',
     },

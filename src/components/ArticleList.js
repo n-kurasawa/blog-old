@@ -6,13 +6,18 @@ import { connect } from 'react-redux';
 const ArticleList = connect(state => state.article)(({ articles }) => (
   <React.Fragment>
     <Typography type="display1">Blog Posts</Typography>
-    {articles.map(article => <Article key={article.id} {...article} />)}
+    {articles.map(article => {
+      if (article === null) {
+        return;
+      }
+      return <Article key={article.id} {...article} />;
+    })}
   </React.Fragment>
 ));
 
 const styles = {
   article: {
-    marginTop: '50px',
+    marginTop: '40px',
     display: 'flex',
     alignItems: 'center',
   },

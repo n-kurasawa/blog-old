@@ -17,7 +17,7 @@ const styles = theme => ({
 
 const Article = connect(state => state.article)(
   ({ articles, classes, match }) => {
-    const article = articles[match.params.id - 1];
+    const article = articles[match.params.id];
     if (!article) {
       return <div />;
     }
@@ -32,7 +32,7 @@ const Article = connect(state => state.article)(
             {article.title}
           </Typography>
           <Divider className={classes.divider} />
-          <Typography type="body1">{article.content}</Typography>
+          <Typography type="body1">{article.contents}</Typography>
         </article>
       </div>
     );
