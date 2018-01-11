@@ -10,7 +10,7 @@
     "dev": "NODE_CONFIG_DIR=./config webpack-dev-server",
     "rm": "rm -rf dist/*",
     "build-webpack": "NODE_CONFIG_DIR=../config parallel-webpack -p --config webpack.build.js",
-    "build": "run-s rm build-webpack"
+    "build": "NODE_ENV=production run-s rm build-webpack"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
