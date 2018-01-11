@@ -2,6 +2,12 @@ import React from 'react';
 import { Typography, Divider } from 'material-ui';
 import { withStyles } from 'material-ui/styles';
 import { connect } from 'react-redux';
+import remark from 'remark';
+import reactRenderer from 'remark-react';
+import breaksRenderer from 'remark-breaks';
+import RemarkLowlight from 'remark-react-lowlight';
+import js from 'highlight.js/lib/languages/javascript';
+import './Article.css';
 
 const styles = theme => ({
   articleInfo: {
@@ -14,6 +20,14 @@ const styles = theme => ({
     margin: '10px 0 20px 0',
   },
 });
+
+const processor = remark()
+  .use(breaksRenderer)
+  .use(reactRenderer, {
+    remarkReactComponents: {
+      code: RemarkLowlight({ js }),
+    },
+  });
 
 const Article = connect(state => state.article)(
   ({ articles, classes, match }) => {
@@ -32,7 +46,14 @@ const Article = connect(state => state.article)(
             {article.title}
           </Typography>
           <Divider className={classes.divider} />
-          <Typography type="body1">{article.contents}</Typography>
+          <div>
+            {
+              processor.processSync(article.contents, {
+                breaks: true,
+                gfm: true,
+              }).contents
+            }
+          </div>
         </article>
       </div>
     );
