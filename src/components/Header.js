@@ -25,7 +25,9 @@ class Header extends React.Component {
   }
 
   handleScroll() {
-    if (document.documentElement.scrollTop > 0) {
+    const scrollTop =
+      document.documentElement.scrollTop || document.body.scrollTop;
+    if (scrollTop > 0) {
       this.setState({ showHeader: true });
     } else {
       this.setState({ showHeader: false });
