@@ -6,11 +6,7 @@ import { load } from 'reducers/article';
 import Header from 'components/Header';
 import ArticleList from 'components/ArticleList';
 import Article from 'components/Article';
-
-const styles = {
-  margin: '90px auto',
-  width: '60%',
-};
+import styles from './App.css';
 
 @connect(null, { load })
 class App extends React.Component {
@@ -23,7 +19,7 @@ class App extends React.Component {
       <BrowserRouter>
         <React.Fragment>
           <Header />
-          <div style={styles}>
+          <div className={styles.container}>
             <Switch>
               <Route exact path="/" component={ArticleList} />
               <Route exact path="/articles" component={ArticleList} />

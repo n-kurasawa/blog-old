@@ -7,3 +7,13 @@
 .title {
   margin-left: 50px;
 }
+@media screen and (max-width: 768px) {
+  .article {
+    margin-top: 40px;
+    display: block;
+  }
+
+  .title {
+    margin-left: 0px;
+  }
+}
