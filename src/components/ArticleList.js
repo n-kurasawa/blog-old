@@ -6,7 +6,9 @@ import styles from './ArticleList.css';
 
 const ArticleList = connect(state => state.article)(({ articles }) => (
   <React.Fragment>
-    <Typography type="display1">Blog Posts</Typography>
+    <Typography type="display1">
+      <div className={styles.posts}>Blog Posts</div>
+    </Typography>
     {articles.map(article => {
       if (article === null) {
         return;

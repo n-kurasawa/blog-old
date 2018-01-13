@@ -9,11 +9,15 @@
 }
 @media screen and (max-width: 768px) {
   .article {
-    margin-top: 40px;
+    margin-top: 15px;
     display: block;
   }
 
   .title {
     margin-left: 0px;
+  }
+
+  .posts {
+    font-size: 26px;
   }
 }
