@@ -22,7 +22,10 @@ const store = createStore(reducer, applyMiddleware(thunkWithClient));
 
 const theme = createMuiTheme({
   palette: {
-    primary: grey,
+    primary: {
+      ...grey,
+      500: '#fff',
+    },
     secondary: {
       ...blueGrey,
     },

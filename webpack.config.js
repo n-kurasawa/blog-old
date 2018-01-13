@@ -87,7 +87,13 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [{ loader: 'style-loader' }, { loader: 'css-loader' }],
+        use: [
+          { loader: 'style-loader' },
+          {
+            loader:
+              'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+          },
+        ],
       },
       {
         test: /\.(woff|woff2|eot|ttf|svg)$/,

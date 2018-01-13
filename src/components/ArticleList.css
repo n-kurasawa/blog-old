@@ -1,0 +1,9 @@
+.article {
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+}
+
+.title {
+  margin-left: 50px;
+}

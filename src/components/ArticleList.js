@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Typography } from 'material-ui';
 import { connect } from 'react-redux';
+import styles from './ArticleList.css';
 
 const ArticleList = connect(state => state.article)(({ articles }) => (
   <React.Fragment>
@@ -15,25 +16,14 @@ const ArticleList = connect(state => state.article)(({ articles }) => (
   </React.Fragment>
 ));
 
-const styles = {
-  article: {
-    marginTop: '40px',
-    display: 'flex',
-    alignItems: 'center',
-  },
-  title: {
-    marginLeft: '50px',
-  },
-};
-
 const Article = ({ id, title, date }) => (
-  <div style={styles.article}>
+  <div className={styles.article}>
     <Link to={`/articles/${id}`}>
-      <Typography style={styles.date}>{date}</Typography>
+      <Typography>{date}</Typography>
     </Link>
     <Link to={`/articles/${id}`}>
-      <Typography style={styles.title} type="headline">
-        {title}
+      <Typography type="headline">
+        <div className={styles.title}>{title}</div>
       </Typography>
     </Link>
   </div>

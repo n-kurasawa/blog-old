@@ -1,14 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { withStyles } from 'material-ui/styles';
 
 import { AppBar, Toolbar, Typography } from 'material-ui';
-
-const styles = theme => ({
-  appBar: {
-    backgroundColor: '#fff',
-  },
-});
 
 class Header extends React.Component {
   constructor(props) {
@@ -41,11 +34,7 @@ class Header extends React.Component {
     }
 
     return (
-      <AppBar
-        style={style}
-        className={this.props.classes.appBar}
-        position="fixed"
-      >
+      <AppBar style={style} position="fixed">
         <Toolbar>
           <Link to="/">
             <Typography type="title">K7016 Tech Blog</Typography>
@@ -56,4 +45,4 @@ class Header extends React.Component {
   }
 }
 
-export default withStyles(styles)(Header);
+export default Header;
