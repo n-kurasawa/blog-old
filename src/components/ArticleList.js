@@ -4,17 +4,19 @@ import { Typography } from 'material-ui';
 import { connect } from 'react-redux';
 import styles from './ArticleList.css';
 
-const ArticleList = connect(state => state.article)(({ articles }) => (
+const mapStateToProps = state => {
+  const articles = state.article.articles.filter(article => article !== null);
+  articles.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
+
+  return { articles };
+};
+
+const ArticleList = connect(mapStateToProps)(({ articles }) => (
   <React.Fragment>
     <Typography type="display1">
       <div className={styles.posts}>Blog Posts</div>
     </Typography>
-    {articles.map(article => {
-      if (article === null) {
-        return;
-      }
-      return <Article key={article.id} {...article} />;
-    })}
+    {articles.map(article => <Article key={article.id} {...article} />)}
   </React.Fragment>
 ));
 
