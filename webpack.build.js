@@ -4,11 +4,6 @@ const webpackConfig = require('./webpack.config.js');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const revision = require('child_process')
-  .execSync('git rev-parse HEAD')
-  .toString()
-  .trim();
-
 const entries = [{ path: 'src', out: '' }];
 
 const configs = entries.map(entry => {
@@ -26,10 +21,7 @@ const configs = entries.map(entry => {
   };
 
   config.plugins = [
-    // Scope Hoisting
-    // スコープの巻き上げによる呼び出し回数の削減と圧縮
     new webpack.optimize.ModuleConcatenationPlugin(),
-    // 共通モジュールをまとめる
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       filename: 'js-[hash:8]/vendor.js',
@@ -37,14 +29,6 @@ const configs = entries.map(entry => {
         return module.context && module.context.indexOf('node_modules') !== -1;
       },
     }),
-    // 環境変数をエクスポート
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: JSON.stringify(process.env.NODE_ENV),
-        GIT_REVISION: JSON.stringify(revision),
-      },
-    }),
-    // JSミニファイ
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       minimize: true,
@@ -54,7 +38,6 @@ const configs = entries.map(entry => {
         warnings: false,
       },
     }),
-    // HTMLテンプレートに生成したJSを埋め込む
     new HtmlWebpackPlugin({
       template: `src/static/${entry.out}index.html`,
       filename: 'index.html',
