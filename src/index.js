@@ -13,9 +13,6 @@ import reducer from 'reducers';
 import App from './App';
 import ArticleApi from 'articleApi';
 
-import 'index.css';
-import 'typeface-roboto';
-
 const history = createHistory();
 const thunkWithClient = thunk.withExtraArgument(new ArticleApi());
 const store = createStore(reducer, applyMiddleware(thunkWithClient));
@@ -35,14 +32,13 @@ const theme = createMuiTheme({
   },
   typography: {
     fontFamily:
-      '"Playfair Display", "Hiragino Mincho ProN", serif, Roboto Helvetica, Arial, sans-serif',
+      '"Playfair Display", "Hiragino Mincho ProN", serif, Helvetica, Arial, sans-serif',
     display1: {
       color: blueGrey[800],
     },
     body1: {
       fontSize: 18,
-      fontFamily:
-        '"Hiragino Mincho ProN", serif, Roboto Helvetica, Arial, sans-serif',
+      fontFamily: '"Hiragino Mincho ProN", serif, Helvetica, Arial, sans-serif',
     },
   },
 });
