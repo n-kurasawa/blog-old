@@ -7,11 +7,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'inline-source-map',
-  entry: [
-    'babel-polyfill',
-    'react-hot-loader/patch',
-    path.join(__dirname, '/src/index'),
-  ],
+  entry: ['react-hot-loader/patch', path.join(__dirname, '/src/index')],
   resolve: {
     modules: ['src', 'node_modules'],
     extensions: ['.js', '.json'],
