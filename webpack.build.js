@@ -5,9 +5,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = Object.assign({}, webpackConfig, {
-  entry: {
-    bundle: [`${__dirname}/src/index`],
-  },
+  entry: `${__dirname}/src/index.js`,
   output: {
     path: `${__dirname}/dist/`,
     filename: 'js-[hash:8]/[name].js',
