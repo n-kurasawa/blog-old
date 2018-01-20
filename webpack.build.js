@@ -14,13 +14,6 @@ module.exports = Object.assign({}, webpackConfig, {
   },
   plugins: [
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'js-[hash:8]/vendor.js',
-      minChunks: module => {
-        return module.context && module.context.indexOf('node_modules') !== -1;
-      },
-    }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       minimize: true,
