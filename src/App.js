@@ -8,7 +8,6 @@ import ArticleList from 'components/ArticleList';
 import Article from 'components/Article';
 import styles from './App.css';
 
-@connect(null, { load })
 class App extends React.Component {
   componentDidMount() {
     this.props.load();
@@ -32,4 +31,4 @@ class App extends React.Component {
   }
 }
 
-export default App;
+export default connect(null, { load })(App);
