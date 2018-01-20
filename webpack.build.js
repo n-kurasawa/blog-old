@@ -42,7 +42,6 @@ config.plugins = [
   }),
 ];
 
-config.devtool = 'source-map';
 config.plugins.push(
   new CopyWebpackPlugin([{ from: 'src/static', ignore: 'index.html' }]),
 );
