@@ -37,7 +37,7 @@ config.plugins = [
     },
   }),
   new HtmlWebpackPlugin({
-    template: `src/static/${entry.out}index.html`,
+    template: `src/static/index.html`,
     filename: 'index.html',
   }),
 ];
