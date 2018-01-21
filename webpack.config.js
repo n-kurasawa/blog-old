@@ -27,15 +27,8 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: 'src/static/index.html',
-      filename: 'index.html',
     }),
     new webpack.HotModuleReplacementPlugin(),
-    // autoprefixerプラグイン利用、cssのベンダープレフィックスを自動的につける
-    new webpack.LoaderOptionsPlugin({
-      options: {
-        postcss: [precss, autoprefixer({ browsers: ['last 2 versions'] })],
-      },
-    }),
   ],
   module: {
     rules: [
@@ -72,9 +65,14 @@ module.exports = {
         use: [
           { loader: 'style-loader' },
           {
-            loader:
-              'css-loader?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+            loader: 'css-loader',
+            options: {
+              modules: true,
+              importLoaders: 1,
+              localIdentName: '[name]__[local]___[hash:base64:5]',
+            },
           },
+          { loader: 'postcss-loader' },
         ],
       },
     ],

@@ -3,6 +3,8 @@ const webpack = require('webpack');
 const webpackConfig = require('./webpack.config.js');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const precss = require('precss');
+const autoprefixer = require('autoprefixer');
 
 module.exports = Object.assign({}, webpackConfig, {
   entry: `${__dirname}/src/index.js`,
@@ -25,7 +27,6 @@ module.exports = Object.assign({}, webpackConfig, {
     }),
     new HtmlWebpackPlugin({
       template: `src/static/index.html`,
-      filename: 'index.html',
     }),
     new CopyWebpackPlugin([{ from: 'src/static', ignore: 'index.html' }]),
   ],
