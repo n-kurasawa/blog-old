@@ -9,7 +9,7 @@
     "lint": "eslint ./src",
     "dev": "webpack-dev-server",
     "clean": "rm -rf dist/*",
-    "build-webpack": "webpack -p --config webpack.build.js",
+    "build-webpack": "webpack -p --config webpack.production.js",
     "build": "npm run clean && npm run build-webpack"
   },
   "devDependencies": {
