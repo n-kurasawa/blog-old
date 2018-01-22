@@ -1,7 +1,5 @@
 /* eslint-disable */
 const webpack = require('webpack');
-const precss = require('precss');
-const autoprefixer = require('autoprefixer');
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
