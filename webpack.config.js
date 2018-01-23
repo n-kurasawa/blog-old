@@ -1,17 +1,16 @@
 /* eslint-disable */
 const webpack = require('webpack');
-const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   devtool: 'inline-source-map',
-  entry: ['react-hot-loader/patch', path.join(__dirname, '/src/index')],
+  entry: ['react-hot-loader/patch', `${__dirname}/src/index.js`],
   resolve: {
     modules: ['src', 'node_modules'],
     extensions: ['.js', '.json'],
   },
   devServer: {
-    contentBase: path.join(__dirname, '/src/static'),
+    contentBase: `${__dirname}/src/static`,
     historyApiFallback: true,
     inline: true,
     hot: true,
@@ -33,7 +32,7 @@ module.exports = {
       {
         test: /\.js?$/,
         exclude: /node_modules/,
-        include: [path.join(__dirname, '/src')],
+        include: [`${__dirname}/src`],
         use: {
           loader: 'babel-loader',
           options: {

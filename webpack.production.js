@@ -24,7 +24,7 @@ module.exports = Object.assign({}, webpackConfig, {
       },
     }),
     new HtmlWebpackPlugin({
-      template: `src/static/index.html`,
+      template: 'src/static/index.html',
     }),
     new CopyWebpackPlugin([{ from: 'src/static', ignore: 'index.html' }]),
   ],
