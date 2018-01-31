@@ -30,32 +30,9 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js?$/,
+        test: /\.js$/,
+        use: 'babel-loader',
         exclude: /node_modules/,
-        include: [`${__dirname}/src`],
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              [
-                'env',
-                {
-                  targets: {
-                    browsers: ['last 2 versions', '> 1%'],
-                  },
-                  modules: false,
-                  useBuiltIns: true,
-                },
-              ],
-              'stage-0',
-              'react',
-            ],
-            plugins: [
-              'babel-plugin-transform-decorators-legacy',
-              'react-hot-loader/babel',
-            ],
-          },
-        },
       },
       {
         test: /\.css$/,
