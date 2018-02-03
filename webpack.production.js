@@ -8,7 +8,7 @@ module.exports = Object.assign({}, webpackConfig, {
   entry: `${__dirname}/src/index.js`,
   output: {
     path: `${__dirname}/dist/`,
-    filename: 'js-[hash:8]/[name].js',
+    filename: '[name].[hash:8].js',
     publicPath: '/',
   },
   plugins: [

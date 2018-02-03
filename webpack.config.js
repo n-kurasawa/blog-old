@@ -18,7 +18,7 @@ module.exports = {
     host: '0.0.0.0',
   },
   output: {
-    publicPath: '/', // デフォルトルートにしないとHMRは有効にならない
+    publicPath: '/',
     filename: 'bundle.js',
   },
   plugins: [
