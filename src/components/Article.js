@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import remark from 'remark';
 import reactRenderer from 'remark-react';
 import breaksRenderer from 'remark-breaks';
+import emoji from 'remark-emoji';
 import RemarkLowlight from 'remark-react-lowlight';
 import js from 'highlight.js/lib/languages/javascript';
 import styles from './Article.css';
@@ -14,7 +15,8 @@ const processor = remark()
     remarkReactComponents: {
       code: RemarkLowlight({ js }),
     },
-  });
+  })
+  .use(emoji);
 
 const Article = connect(state => state.article)(({ articles, match }) => {
   const article = articles[match.params.id];
