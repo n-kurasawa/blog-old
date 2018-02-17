@@ -26,16 +26,10 @@ const theme = createMuiTheme({
     secondary: {
       ...blueGrey,
     },
-    text: {
-      primary: blueGrey[800],
-    },
   },
   typography: {
     fontFamily:
       '"Playfair Display", "Hiragino Mincho ProN", serif, Helvetica, Arial, sans-serif',
-    display1: {
-      color: blueGrey[800],
-    },
     body1: {
       fontSize: 18,
       fontFamily: '"Hiragino Mincho ProN", serif, Helvetica, Arial, sans-serif',
