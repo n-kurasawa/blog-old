@@ -1,7 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-import { AppBar, Toolbar, Typography } from 'material-ui';
+import { AppBar, Toolbar, Typography, IconButton } from 'material-ui';
+import { AccountCircle } from 'material-ui-icons';
+
+import styles from './Header.css';
 
 class Header extends React.Component {
   constructor(props) {
@@ -34,11 +37,14 @@ class Header extends React.Component {
     }
 
     return (
-      <AppBar style={style} position="fixed">
+      <AppBar className={styles.root} style={style} position="fixed">
         <Toolbar>
-          <Link to="/">
+          <Link to="/" className={styles.link}>
             <Typography type="title">K7016 Tech Blog</Typography>
           </Link>
+          <IconButton color="inherit">
+            <AccountCircle />
+          </IconButton>
         </Toolbar>
       </AppBar>
     );
