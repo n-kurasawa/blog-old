@@ -6,6 +6,7 @@ import { load } from 'reducers/article';
 import Header from 'components/Header';
 import ArticleList from 'components/ArticleList';
 import Article from 'components/Article';
+import Profile from 'components/Profile';
 import styles from './App.css';
 
 class App extends React.Component {
@@ -23,6 +24,7 @@ class App extends React.Component {
               <Route exact path="/" component={ArticleList} />
               <Route exact path="/articles" component={ArticleList} />
               <Route path="/articles/:id" component={Article} />
+              <Route path="/profile" component={Profile} />
             </Switch>
           </div>
         </React.Fragment>

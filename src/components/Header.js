@@ -42,9 +42,11 @@ class Header extends React.Component {
           <Link to="/" className={styles.link}>
             <Typography type="title">K7016 Tech Blog</Typography>
           </Link>
-          <IconButton color="inherit">
-            <AccountCircle />
-          </IconButton>
+          <Link to="/profile">
+            <IconButton color="inherit">
+              <AccountCircle />
+            </IconButton>
+          </Link>
         </Toolbar>
       </AppBar>
     );
