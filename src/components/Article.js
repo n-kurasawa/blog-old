@@ -25,25 +25,23 @@ const Article = connect(state => state.article)(({ articles, match }) => {
   }
 
   return (
-    <div>
-      <article>
-        <div className={styles.articleInfo}>
-          <Typography>{article.date}</Typography>
-        </div>
-        <Typography type="title">
-          <div className={styles.title}>{article.title}</div>
-        </Typography>
-        <Divider className={styles.divider} />
-        <div>
-          {
-            processor.processSync(article.contents, {
-              breaks: true,
-              gfm: true,
-            }).contents
-          }
-        </div>
-      </article>
-    </div>
+    <article>
+      <div className={styles.articleInfo}>
+        <Typography>{article.date}</Typography>
+      </div>
+      <Typography type="title">
+        <div className={styles.title}>{article.title}</div>
+      </Typography>
+      <Divider className={styles.divider} />
+      <div>
+        {
+          processor.processSync(article.contents, {
+            breaks: true,
+            gfm: true,
+          }).contents
+        }
+      </div>
+    </article>
   );
 });
 
