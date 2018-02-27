@@ -4,16 +4,9 @@ module.exports = {
     modules: ['src', 'node_modules'],
     extensions: ['.js', '.json'],
   },
-  output: {
-    filename: '[name].bundle.js',
-    chunkFilename: '[name].bundle.js',
-    path: __dirname + '/public',
-    publicPath: '/',
-  },
   devServer: {
-    contentBase: 'public/',
+    contentBase: 'dist/',
     historyApiFallback: true,
-    port: 8080,
   },
   module: {
     rules: [

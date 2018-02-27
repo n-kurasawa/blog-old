@@ -9,7 +9,7 @@
     "lint": "eslint ./src",
     "watch": "webpack-dev-server --hot --mode development",
     "build": "webpack --mode production",
-    "build:size": "NODE_ENV=production webpack --json | webpack-bundle-size-analyzer"
+    "build:size": "webpack --mode production --json | webpack-bundle-size-analyzer"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
