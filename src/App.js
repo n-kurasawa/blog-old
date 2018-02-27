@@ -1,4 +1,6 @@
+/*globals module: false */
 import React from 'react';
+import { hot } from 'react-hot-loader';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { load } from 'reducers/article';
@@ -33,4 +35,4 @@ class App extends React.Component {
   }
 }
 
-export default connect(null, { load })(App);
+export default connect(null, { load })(hot(module)(App));
