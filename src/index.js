@@ -1,4 +1,3 @@
-/*globals module: false */
 import React from 'react';
 import ReactDOM from 'react-dom';
 import createHistory from 'history/createBrowserHistory';
@@ -37,24 +36,13 @@ const theme = createMuiTheme({
   },
 });
 
-const render = Component => {
-  ReactDOM.render(
-    <AppContainer>
-      <MuiThemeProvider theme={theme}>
-        <Provider store={store}>
-          <Component history={history} />
-        </Provider>
-      </MuiThemeProvider>
-    </AppContainer>,
-    document.getElementById('root'),
-  );
-};
-
-render(App);
-
-// Webpack Hot Module Replacement API
-if (module.hot) {
-  module.hot.accept('./App', () => {
-    render(App);
-  });
-}
+ReactDOM.render(
+  <AppContainer>
+    <MuiThemeProvider theme={theme}>
+      <Provider store={store}>
+        <App history={history} />
+      </Provider>
+    </MuiThemeProvider>
+  </AppContainer>,
+  document.getElementById('root'),
+);
