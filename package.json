@@ -7,8 +7,9 @@
   "license": "MIT",
   "scripts": {
     "lint": "eslint ./src",
+    "clean": "rm -f dist/*bundle.js",
     "watch": "webpack-dev-server --hot --mode development",
-    "build": "webpack --mode production",
+    "build": "npm run clean && webpack --mode production",
     "build:size": "webpack --mode production --json | webpack-bundle-size-analyzer"
   },
   "devDependencies": {

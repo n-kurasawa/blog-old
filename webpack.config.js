@@ -6,7 +6,7 @@ module.exports = {
     app: './src/index.js',
   },
   output: {
-    filename: '[name]-[hash].js',
+    filename: '[name]-[hash].bundle.js',
   },
   resolve: {
     modules: ['src', 'node_modules'],
