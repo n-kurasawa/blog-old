@@ -1,5 +1,13 @@
 /* eslint-disable */
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
+  entry: {
+    app: './src/index.js',
+  },
+  output: {
+    filename: '[name]-[hash].js',
+  },
   resolve: {
     modules: ['src', 'node_modules'],
     extensions: ['.js', '.json'],
@@ -33,4 +41,9 @@ module.exports = {
       },
     ],
   },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: './src/static/index.html',
+    }),
+  ],
 };
