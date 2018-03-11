@@ -9,7 +9,6 @@ const mapStateToProps = state => {
   const articles = state.article.articles.filter(article => article !== null);
   articles.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
-  console.log(articles);
   return { articles };
 };
 
