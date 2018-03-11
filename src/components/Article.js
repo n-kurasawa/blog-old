@@ -7,6 +7,7 @@ import breaksRenderer from 'remark-breaks';
 import emoji from 'remark-emoji';
 import RemarkLowlight from 'remark-react-lowlight';
 import js from 'highlight.js/lib/languages/javascript';
+import Tags from './Tags';
 import styles from './Article.css';
 
 const processor = remark()
@@ -33,6 +34,7 @@ const Article = connect(state => state.article)(({ articles, match }) => {
         <div className={styles.title}>{article.title}</div>
       </Typography>
       <Divider className={styles.divider} />
+      <Tags tags={article.tags} />
       <div>
         {
           processor.processSync(article.contents, {
