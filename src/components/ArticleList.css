@@ -7,6 +7,11 @@
 .title {
   margin-left: 50px;
 }
+
+.tags {
+  margin-top: 5px;
+}
+
 @media screen and (max-width: 768px) {
   .article {
     margin-top: 15px;

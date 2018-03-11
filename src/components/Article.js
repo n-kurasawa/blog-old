@@ -34,7 +34,7 @@ const Article = connect(state => state.article)(({ articles, match }) => {
         <div className={styles.title}>{article.title}</div>
       </Typography>
       <Divider className={styles.divider} />
-      <Tags tags={article.tags} />
+      <Tags values={article.tags} />
       <div>
         {
           processor.processSync(article.contents, {

@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom';
 import { Typography } from 'material-ui';
 import { connect } from 'react-redux';
 import styles from './ArticleList.css';
+import Tags from './Tags';
 
 const mapStateToProps = state => {
   const articles = state.article.articles.filter(article => article !== null);
   articles.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
+  console.log(articles);
   return { articles };
 };
 
@@ -20,16 +22,23 @@ const ArticleList = connect(mapStateToProps)(({ articles }) => (
   </React.Fragment>
 ));
 
-const Article = ({ id, title, date }) => (
-  <div className={styles.article}>
-    <Link to={`/articles/${id}`}>
-      <Typography>{date}</Typography>
-    </Link>
-    <Link to={`/articles/${id}`}>
-      <Typography type="headline">
-        <div className={styles.title}>{title}</div>
-      </Typography>
-    </Link>
+const Article = ({ id, title, date, tags }) => (
+  <div>
+    <div className={styles.article}>
+      <Link to={`/articles/${id}`}>
+        <Typography>{date}</Typography>
+      </Link>
+      <div className={styles.title}>
+        <Link to={`/articles/${id}`}>
+          <Typography type="headline">
+            <div>{title}</div>
+          </Typography>
+        </Link>
+        <div className={styles.tags}>
+          <Tags values={tags} />
+        </div>
+      </div>
+    </div>
   </div>
 );
 
