@@ -6,6 +6,7 @@ const Profile = () => (
   <div>
     <Typography type="title">Profile</Typography>
     <div className={styles.content}>
+      <p>仕事ではRails使ってます。 家ではjsとか。</p>
       <div>
         <Typography>github</Typography>
         <a href="https://github.com/n-kurasawa">
