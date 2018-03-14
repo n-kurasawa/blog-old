@@ -12,19 +12,22 @@ const mapStateToProps = state => {
   return { articles };
 };
 
+// TODO: stateでlocationを管理して mapStateToProps で処理する?
+const makeArticle = (articles, location) =>
+  articles
+    .filter(article =>
+      article.tags.includes(
+        new URLSearchParams(location.search).get('tag') || '',
+      ),
+    )
+    .map(article => <Article key={article.id} {...article} />);
+
 const ArticleList = connect(mapStateToProps)(({ articles, location }) => (
   <React.Fragment>
     <Typography type="display1">
       <div className={styles.posts}>Blog Posts</div>
     </Typography>
-    {/* TODO: stateを管理してロジックを外にだす*/}
-    {articles
-      .filter(article =>
-        article.tags.includes(
-          new URLSearchParams(location.search).get('tag') || '',
-        ),
-      )
-      .map(article => <Article key={article.id} {...article} />)}
+    {makeArticle(articles, location)}
   </React.Fragment>
 ));
 
