@@ -12,12 +12,19 @@ const mapStateToProps = state => {
   return { articles };
 };
 
-const ArticleList = connect(mapStateToProps)(({ articles }) => (
+const ArticleList = connect(mapStateToProps)(({ articles, location }) => (
   <React.Fragment>
     <Typography type="display1">
       <div className={styles.posts}>Blog Posts</div>
     </Typography>
-    {articles.map(article => <Article key={article.id} {...article} />)}
+    {/* TODO: stateを管理してロジックを外にだす*/}
+    {articles
+      .filter(article =>
+        article.tags.includes(
+          new URLSearchParams(location.search).get('tag') || '',
+        ),
+      )
+      .map(article => <Article key={article.id} {...article} />)}
   </React.Fragment>
 ));
 
