@@ -12,14 +12,14 @@ const mapStateToProps = state => {
   return { articles };
 };
 
+function getTag(location) {
+  return new URLSearchParams(location.search).get('tag');
+}
+
 // TODO: stateでlocationを管理して mapStateToProps で処理する?
 const makeArticle = (articles, location) =>
   articles
-    .filter(article =>
-      article.tags.includes(
-        new URLSearchParams(location.search).get('tag') || '',
-      ),
-    )
+    .filter(article => article.tags.includes(getTag(location) || ''))
     .map(article => <Article key={article.id} {...article} />);
 
 const ArticleList = connect(mapStateToProps)(({ articles, location }) => (
