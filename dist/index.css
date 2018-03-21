@@ -15,6 +15,7 @@ pre {
 
 /*
 
+https://github.com/isagalaev/highlight.js/blob/master/src/styles/atom-one-dark.css
 Atom One Dark by Daniel Gamage
 Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
 
@@ -43,6 +44,10 @@ pre code.hljs {
   padding: 0.5em;
   color: #abb2bf;
   background: #282c34;
+}
+
+.hljs-function, .hljs-params {
+  color: #abb2bf;
 }
 
 .hljs-comment,
