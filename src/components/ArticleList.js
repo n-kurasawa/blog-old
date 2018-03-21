@@ -6,7 +6,10 @@ import styles from './ArticleList.css';
 import Tags from './Tags';
 
 const mapStateToProps = state => {
-  const articles = state.article.articles.filter(article => article !== null);
+  console.log(state);
+  const articles = Object.values(state.article.articles).filter(
+    article => article !== null,
+  );
   articles.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
 
   return { articles };
