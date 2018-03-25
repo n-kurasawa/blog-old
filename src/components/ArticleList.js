@@ -6,7 +6,6 @@ import styles from './ArticleList.css';
 import Tags from './Tags';
 
 const mapStateToProps = state => {
-  console.log(state);
   const articles = Object.values(state.article.articles).filter(
     article => article !== null,
   );

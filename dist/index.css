@@ -6,6 +6,9 @@ a {
 }
 * {
   font-family: "Hiragino Mincho ProN", serif, Roboto Helvetica, Arial, sans-serif;
+}
+
+:not(a) {
   color: #37474f;
 }
 
