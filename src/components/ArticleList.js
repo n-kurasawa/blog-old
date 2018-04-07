@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Typography } from 'material-ui';
 import { connect } from 'react-redux';
-import styles from './ArticleList.css';
+import styled from 'styled-components';
 import Tags from './Tags';
 
 const mapStateToProps = state => {
@@ -27,30 +27,55 @@ const makeArticle = (articles, location) =>
 const ArticleList = connect(mapStateToProps)(({ articles, location }) => (
   <React.Fragment>
     <Typography type="display1">
-      <div className={styles.posts}>Blog Posts</div>
+      <Posts>Blog Posts</Posts>
     </Typography>
     {makeArticle(articles, location)}
   </React.Fragment>
 ));
 
 const Article = ({ id, title, date, tags }) => (
-  <div>
-    <div className={styles.article}>
+  <Wrapper>
+    <Link to={`/articles/${id}`}>
+      <Typography>{date}</Typography>
+    </Link>
+    <Title>
       <Link to={`/articles/${id}`}>
-        <Typography>{date}</Typography>
+        <Typography type="headline">
+          <div>{title}</div>
+        </Typography>
       </Link>
-      <div className={styles.title}>
-        <Link to={`/articles/${id}`}>
-          <Typography type="headline">
-            <div>{title}</div>
-          </Typography>
-        </Link>
-        <div className={styles.tags}>
-          <Tags values={tags} />
-        </div>
-      </div>
-    </div>
-  </div>
+      <Tag>
+        <Tags values={tags} />
+      </Tag>
+    </Title>
+  </Wrapper>
 );
+
+const Wrapper = styled.div`
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  @media screen and (max-width: 768px) {
+    margin-top: 15px;
+    display: block;
+  }
+`;
+
+const Title = styled.div`
+  margin-left: 50px;
+  @media screen and (max-width: 768px) {
+    margin-left: 0;
+  }
+`;
+
+const Tag = styled.div`
+  margin-top: 5px;
+`;
+
+const Posts = styled.div`
+  @media screen and (max-width: 768px) {
+    font-size: 26px;
+  }
+`;
 
 export default ArticleList;
