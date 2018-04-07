@@ -3,8 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { AppBar, Toolbar, Typography, IconButton } from 'material-ui';
 import { AccountCircle } from 'material-ui-icons';
-
-import styles from './Header.css';
+import styled from 'styled-components';
 
 class Header extends React.Component {
   constructor(props) {
@@ -37,11 +36,11 @@ class Header extends React.Component {
     }
 
     return (
-      <AppBar className={styles.root} style={style} position="fixed">
+      <AppBar style={style} position="fixed">
         <Toolbar>
-          <Link to="/" className={styles.link}>
+          <LinkWrapper to="/">
             <Typography type="title">K7016 Tech Blog</Typography>
-          </Link>
+          </LinkWrapper>
           <Link to="/profile">
             <IconButton color="inherit">
               <AccountCircle />
@@ -52,5 +51,9 @@ class Header extends React.Component {
     );
   }
 }
+
+const LinkWrapper = styled(Link)`
+  flex: 1;
+`;
 
 export default Header;

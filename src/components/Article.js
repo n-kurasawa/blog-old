@@ -8,7 +8,7 @@ import emoji from 'remark-emoji';
 import RemarkLowlight from 'remark-react-lowlight';
 import js from 'highlight.js/lib/languages/javascript';
 import Tags from './Tags';
-import styles from './Article.css';
+import styled from 'styled-components';
 
 const processor = remark()
   .use(breaksRenderer)
@@ -27,13 +27,13 @@ const Article = connect(state => state.article)(({ articles, match }) => {
 
   return (
     <article>
-      <div className={styles.articleInfo}>
+      <ArticleInfo>
         <Typography>{article.date}</Typography>
-      </div>
+      </ArticleInfo>
       <Typography type="title">
-        <div className={styles.title}>{article.title}</div>
+        <Title>{article.title}</Title>
       </Typography>
-      <Divider className={styles.divider} />
+      <TitleDivider />
       <Tags values={article.tags} />
       <div>
         {
@@ -46,5 +46,17 @@ const Article = connect(state => state.article)(({ articles, match }) => {
     </article>
   );
 });
+
+const ArticleInfo = styled.div`
+  margin: 10px 0 10px 0;
+`;
+
+const Title = styled.div`
+  font-size: 25px;
+`;
+
+const TitleDivider = styled(Divider)`
+  margin: 10px 0 10px 0 !important;
+`;
 
 export default Article;

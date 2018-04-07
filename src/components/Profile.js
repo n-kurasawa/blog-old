@@ -1,11 +1,11 @@
 import React from 'react';
 import { Typography } from 'material-ui';
-import styles from './Profile.css';
+import styled from 'styled-components';
 
 const Profile = () => (
   <div>
     <Typography type="title">Profile</Typography>
-    <div className={styles.content}>
+    <Content>
       <p>仕事ではRails使ってます。 家ではjsとか。</p>
       <div>
         <Typography>github</Typography>
@@ -13,12 +13,20 @@ const Profile = () => (
           https://github.com/n-kurasawa
         </a>
       </div>
-      <div className={styles.section}>
+      <Section>
         <Typography>twitter</Typography>
         <a href="https://twitter.com/k_7016">https://twitter.com/k_7016</a>
-      </div>
-    </div>
+      </Section>
+    </Content>
   </div>
 );
+
+const Content = styled.div`
+  margin-top: 20px;
+`;
+
+const Section = styled.div`
+  margin-top: 10px;
+`;
 
 export default Profile;

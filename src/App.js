@@ -9,7 +9,7 @@ import Header from 'components/Header';
 import ArticleList from 'components/ArticleList';
 import Article from 'components/Article';
 import Profile from 'components/Profile';
-import styles from './App.css';
+import styled from 'styled-components';
 
 class App extends React.Component {
   componentDidMount() {
@@ -21,18 +21,28 @@ class App extends React.Component {
       <BrowserRouter>
         <React.Fragment>
           <Header />
-          <div className={styles.container}>
+          <Container>
             <Switch>
               <Route exact path="/" component={ArticleList} />
               <Route exact path="/articles" component={ArticleList} />
               <Route path="/articles/:id" component={Article} />
               <Route path="/profile" component={Profile} />
             </Switch>
-          </div>
+          </Container>
         </React.Fragment>
       </BrowserRouter>
     );
   }
 }
+
+const Container = styled.div`
+  margin: 90px auto;
+  width: 60%;
+
+  @media screen and (max-width: 768px) {
+    margin: 70px auto;
+    width: 90%;
+  }
+`;
 
 export default connect(null, { load })(hot(module)(App));
