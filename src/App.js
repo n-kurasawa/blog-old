@@ -3,13 +3,13 @@ import React from 'react';
 import { hot } from 'react-hot-loader';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { load } from 'reducers/article';
+import styled from 'styled-components';
 
+import { load } from 'reducers/article';
 import Header from 'components/Header';
 import ArticleList from 'components/ArticleList';
 import Article from 'components/Article';
 import Profile from 'components/Profile';
-import styled from 'styled-components';
 
 class App extends React.Component {
   componentDidMount() {

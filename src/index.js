@@ -11,7 +11,7 @@ import 'babel-polyfill';
 import 'url-search-params-polyfill';
 
 import reducer from 'reducers';
-import App from './App';
+import App from 'App';
 import ArticleApi from 'articleApi';
 
 const history = createHistory();
