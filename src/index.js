@@ -9,7 +9,6 @@ import { grey, blueGrey } from 'material-ui/colors';
 import { AppContainer } from 'react-hot-loader';
 import 'babel-polyfill';
 import 'url-search-params-polyfill';
-
 import reducer from 'reducers';
 import App from 'App';
 import ArticleApi from 'articleApi';

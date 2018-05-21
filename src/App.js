@@ -4,7 +4,6 @@ import { hot } from 'react-hot-loader';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { connect } from 'react-redux';
 import styled from 'styled-components';
-
 import { load } from 'reducers/article';
 import Header from 'components/Header';
 import ArticleList from 'components/ArticleList';
