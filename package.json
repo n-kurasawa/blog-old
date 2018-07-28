@@ -8,7 +8,8 @@
   "scripts": {
     "lint": "eslint ./src",
     "clean": "rm -f dist/*bundle.js",
-    "watch": "webpack-dev-server --hot --mode development",
+    "dev": "webpack-dev-server --hot --mode development",
+    "watch": "webpack --watch",
     "build": "npm run clean && webpack --mode production",
     "build:size": "webpack --mode production --json | webpack-bundle-size-analyzer"
   },
