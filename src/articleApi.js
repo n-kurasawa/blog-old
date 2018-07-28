@@ -1,17 +1,32 @@
 import firebase from '@firebase/app';
 import '@firebase/database';
-import '@firebase/functions';
 import config from './config';
+import ApolloClient from 'apollo-boost';
+import gql from 'graphql-tag';
 
 export default class ArticleApi {
   constructor() {
     firebase.initializeApp(config);
     this.db = firebase.database();
 
-    const helloFirebase = firebase.functions().httpsCallable('helloFirebase');
-    helloFirebase({ text: 'test' }).then(result => {
-      console.log(result);
+    // const helloFirebase = firebase.functions().httpsCallable('helloFirebase');
+    // helloFirebase({ text: 'test' }).then(result => {
+    //   console.log(result);
+    // });
+    const client = new ApolloClient({
+      uri: 'http://localhost:5001/blog-77588/us-central1/api/graphql',
     });
+
+    client
+      .query({
+        query: gql`
+          query hello {
+            hello
+          }
+        `,
+      })
+      .then(data => console.log(data))
+      .catch(error => console.error(error));
   }
 
   all() {
