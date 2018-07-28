@@ -4,3 +4,4 @@ node_modules
 src/config/index.js
 dist/*bundle.js
 dist/index.html
+functions/dist
