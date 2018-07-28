@@ -14,7 +14,7 @@ export default class ArticleApi {
     //   console.log(result);
     // });
     const client = new ApolloClient({
-      uri: 'http://localhost:5001/blog-77588/us-central1/api/graphql',
+      uri: '/api/graphql',
     });
 
     client

@@ -11,6 +11,9 @@
     ],
     "rewrites": [
       {
+        "source": "/api/graphql", "function": "api/graphql"
+      },
+      {
         "source": "**",
         "destination": "/index.html"
       }
