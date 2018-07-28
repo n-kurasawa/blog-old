@@ -1,6 +1,24 @@
 import * as functions from 'firebase-functions';
+import express from 'express';
+import { ApolloServer, gql } from 'apollo-server-express';
 
-export const helloWorld = functions.https.onRequest((req, res) => {
-  const world = `from ES6 in Cloud Functions!`;
-  res.status(200).send(`Hello ${world}`);
-});
+// Construct a schema, using GraphQL schema language
+const typeDefs = gql`
+  type Query {
+    hello: String
+  }
+`;
+
+// Provide resolver functions for your schema fields
+const resolvers = {
+  Query: {
+    hello: () => 'Hello world!',
+  },
+};
+
+const server = new ApolloServer({ typeDefs, resolvers });
+
+const app = express();
+server.applyMiddleware({ app });
+
+export const api = functions.https.onRequest(app);
