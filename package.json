@@ -9,9 +9,10 @@
     "lint": "eslint ./src",
     "clean": "rm -f dist/*bundle.js",
     "dev": "webpack-dev-server --hot --mode development",
-    "watch": "webpack --watch",
+    "watch": "webpack --watch --mode development",
     "build": "npm run clean && webpack --mode production",
-    "build:size": "webpack --mode production --json | webpack-bundle-size-analyzer"
+    "build:size": "webpack --mode production --json | webpack-bundle-size-analyzer",
+    "serve": "firebase serve"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.6",
@@ -43,6 +44,7 @@
     "material-ui": "^1.0.0-beta.22",
     "material-ui-icons": "^1.0.0-beta.17",
     "react": "^16.2.0",
+    "react-apollo": "^2.1.9",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "4.2.2",

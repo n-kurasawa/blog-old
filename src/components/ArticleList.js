@@ -1,37 +1,33 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Typography } from 'material-ui';
-import { connect } from 'react-redux';
 import styled from 'styled-components';
 import Tags from './Tags';
-
-const mapStateToProps = state => {
-  const articles = Object.values(state.article.articles).filter(
-    article => article !== null,
-  );
-  articles.sort((a, b) => Date.parse(b.date) - Date.parse(a.date));
-
-  return { articles };
-};
+import { graphql } from 'react-apollo';
+import gql from 'graphql-tag';
 
 function getTag(location) {
   return new URLSearchParams(location.search).get('tag');
 }
 
 // TODO: stateでlocationを管理して mapStateToProps で処理する?
-const makeArticle = (articles, location) =>
-  articles
+const makeArticle = (list, location) => {
+  if (list.loading) {
+    return [];
+  }
+  return list.articles
     .filter(article => article.tags.includes(getTag(location) || ''))
     .map(article => <Article key={article.id} {...article} />);
+};
 
-const ArticleList = connect(mapStateToProps)(({ articles, location }) => (
+const ArticleList = ({ location, list }) => (
   <React.Fragment>
     <Typography type="display1">
       <Posts>Blog Posts</Posts>
     </Typography>
-    {makeArticle(articles, location)}
+    {makeArticle(list, location)}
   </React.Fragment>
-));
+);
 
 const Article = ({ id, title, date, tags }) => (
   <Wrapper>
@@ -78,4 +74,17 @@ const Posts = styled.div`
   }
 `;
 
-export default ArticleList;
+const LIST = gql`
+  query articles {
+    articles {
+      id
+      title
+      tags
+      date
+    }
+  }
+`;
+
+export default graphql(LIST, {
+  name: 'list',
+})(ArticleList);
