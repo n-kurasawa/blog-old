@@ -1,6 +1,9 @@
 import * as functions from 'firebase-functions';
+import admin from 'firebase-admin';
 import express from 'express';
 import { ApolloServer, gql } from 'apollo-server-express';
+
+admin.initializeApp();
 
 const typeDefs = gql`
   type Query {
@@ -16,24 +19,17 @@ const typeDefs = gql`
   }
 `;
 
+async function articles() {
+  const snapshot = await admin
+    .database()
+    .ref('all')
+    .once('value');
+  return snapshot.val();
+}
+
 const resolvers = {
   Query: {
-    articles: () => [
-      {
-        id: 1,
-        title: 'タイトル',
-        contents: 'コンテンツです',
-        tags: 'タグ ほげ test',
-        date: '2018-03-11',
-      },
-      {
-        id: 2,
-        title: 'タイトル2',
-        contents: '2コンテンツです',
-        tags: 'タグ',
-        date: '2018-03-12',
-      },
-    ],
+    articles,
   },
 };
 
