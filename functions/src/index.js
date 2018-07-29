@@ -2,17 +2,38 @@ import * as functions from 'firebase-functions';
 import express from 'express';
 import { ApolloServer, gql } from 'apollo-server-express';
 
-// Construct a schema, using GraphQL schema language
 const typeDefs = gql`
   type Query {
-    hello: String
+    articles: [Article!]!
+  }
+
+  type Article {
+    id: ID! @unique
+    title: String!
+    contents: String!
+    tags: String!
+    date: String!
   }
 `;
 
-// Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    hello: () => 'Hello world!',
+    articles: () => [
+      {
+        id: 1,
+        title: 'タイトル',
+        contents: 'コンテンツです',
+        tags: 'タグ ほげ test',
+        date: '2018-03-11',
+      },
+      {
+        id: 2,
+        title: 'タイトル2',
+        contents: '2コンテンツです',
+        tags: 'タグ',
+        date: '2018-03-12',
+      },
+    ],
   },
 };
 
